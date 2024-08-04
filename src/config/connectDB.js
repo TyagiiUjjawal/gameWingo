@@ -10,6 +10,15 @@ const connection = mysql.createPool({
   connectionLimit: 10,
   queueLimit: 0
 });
+connection.getConnection()
+  .then(conn => {
+    console.log("Connected to the database successfully!");
+    conn.release();
+  })
+  .catch(err => {
+    console.error("Unable to connect to the database:", err.message);
+  });
+
 console.log('DATABASE_HOST:', process.env.DATABASE_HOST);
 console.log('DATABASE_USER:', process.env.DATABASE_USER);
 console.log('DATABASE_PASSWORD:', process.env.DATABASE_PASSWORD);
