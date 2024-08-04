@@ -34,7 +34,7 @@ socketIoController.sendMessageAdmin(io);
 //     return res.render("404.ejs"); 
 // });
 
-server.listen(port, () => {
-    console.log("Connected success port: " + port);
+server.listen(port, '0.0.0.0', () => {
+    console.log(`Connected successfully on port: ${port}`);
 });
 
