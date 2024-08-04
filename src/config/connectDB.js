@@ -14,7 +14,7 @@ connection.getConnection()
     conn.release();
   })
   .catch(err => {
-    console.error("Unable to connect to the database:", err.message);
+    console.error("Unable to connect to the database:", err);
   });
 
 console.log('DATABASE_HOST:', process.env.DATABASE_HOST);
