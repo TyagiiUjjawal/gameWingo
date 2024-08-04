@@ -5,6 +5,8 @@ const connection = mysql.createPool({
     user: process.env.DATABASE_USER,
     password: process.env.DATABASE_PASSWORD,
     database: process.env.DATABASE_NAME,
+    connectTimeout: parseInt(process.env.DB_CONNECTION_TIMEOUT, 10) || 10000, // Default to 10 seconds
+
 });
 console.log('DATABASE_HOST:', process.env.DATABASE_HOST);
 console.log('DATABASE_USER:', process.env.DATABASE_USER);
