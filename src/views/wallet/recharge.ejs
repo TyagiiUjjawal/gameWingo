@@ -7930,6 +7930,39 @@
             <span data-v-67caa467="" class="van-button__text">Deposit Fund</span>
         </div>
     </button>
+    
+       <br><br>
+    <div data-v-67caa467="" class="title c-row c-row-middle">
+        <div data-v-67caa467="" class="van-image" style="width: 20px; height: 20px;">
+            <img src="/images/htmls2.png" class="van-image__img">
+        </div>
+        <span data-v-67caa467="" class="m-l-10"> UTR Number </span>
+    </div>
+  
+    <br>
+    <div class="box numberSize c-row c-row-between c-row-middle p-l-10">
+        <div class="fuhao">:</div>
+        <div class="input van-cell van-field">
+            <div class="van-cell__value van-cell__value--alone van-field__value">
+                <div class="van-field__body">
+                    <input type="text" id="utrNumber" placeholder="Enter UTR Number" class="van-field__control" required>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <button class="next-btn van-button van-button--default van-button--normal van-button--block van-button--round" id="submitBtn" type="button" onclick="submitData()">
+        <div class="van-button__content">
+            <span class="van-button__text" >Submit</span>
+        </div>
+    </button>
+    <div data-v-67caa467="" class="title c-row c-row-middle"  id="success" style=" display: none;"  >
+     
+        <span data-v-67caa467="" class="m-l-10"> Submit Successfully ✅ </span>
+    </div>
+
+    
+    
     <div id="qrModal" class="modal" style="
     display: none; /* Initially hidden */
     position: fixed; /* Stay in place */
@@ -8221,6 +8254,44 @@ function submitFormAndRedirect() {
         alert('Minimum recharge amount is 4');
     }
 }
+async function submitData() {
+        const utrNumber = document.getElementById('utrNumber').value;
+        const success = document.getElementById('success');
+        const submitBtn = document.getElementById('submitBtn');
+        const submitBtnText = submitBtn.querySelector('.van-button__text');
+
+        // Show "Submitting..." text
+        submitBtnText.textContent = 'Submitting...';
+        submitBtn.disabled = true;  // Disable the button to prevent multiple submissions
+
+        try {
+            const response = await fetch('/api/webapi/save_utr', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({  utrNumber })
+            });
+
+            if (response.ok) {
+                // Show success message and change button text to "Submitted"
+                success.style.display = "flex";
+                submitBtnText.textContent = 'Submitted';
+            } else {
+                console.error('Error:', response.statusText);
+                alert('Server Error');
+                // Revert button text and state
+                submitBtnText.textContent = 'Submit';
+                submitBtn.disabled = false;
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred');
+            // Revert button text and state
+            submitBtnText.textContent = 'Submit';
+            submitBtn.disabled = false;
+        }
+    }
 function showQrModal(imageSrc) {
     var modal = document.getElementById('qrModal');
     var img = document.getElementById('qrImage');

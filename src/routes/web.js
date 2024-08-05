@@ -115,6 +115,7 @@ const initWebRouter = (app) => {
 
     // wallet
     router.post('/api/webapi/recharge', middlewareController, userController.recharge);
+    router.post('/api/webapi/save_utr',userController.saveUtrController);
     router.post('/api/webapi/cancel_recharge', middlewareController, userController.cancelRecharge); // register
     router.post('/wowpay/create', middlewareController, userController.wowpay);
     router.post('/api/webapi/confirm_recharge', middlewareController, userController.confirmRecharge);
@@ -175,7 +176,7 @@ const initWebRouter = (app) => {
     router.get('/admin/manager/5d', adminController.middlewareAdminController, adminController.adminPage5d); // get info account
     router.get('/admin/manager/k3', adminController.middlewareAdminController, adminController.adminPageK3); // get info account
 
-
+    router.get('/admin/manager/rechargeRequests', adminController.middlewareAdminController, adminController.rechargeRequestsPage); // get info account
     router.get('/admin/manager/members', adminController.middlewareAdminController, adminController.membersPage); // get info account
     router.get('/admin/manager/createBonus', adminController.middlewareAdminController, adminController.giftPage); // get info account
     router.get('/admin/manager/ctv', adminController.middlewareAdminController, adminController.ctvPage); // get info account

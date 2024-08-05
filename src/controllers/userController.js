@@ -178,6 +178,38 @@ const changePassword = async (req, res) => {
     });
 
 }
+const saveUtrController = async (req, res) => {
+    const { utrNumber } = req.body;
+
+    // Retrieve the auth token from cookies
+    const auth = req.cookies.auth;
+    if (!auth) {
+        return res.status(401).send('Unauthorized');
+    }
+
+    try {
+        // Query the database to find the user by the token
+        const [user] = await connection.query('SELECT `phone` FROM users WHERE `token` = ?', [auth]);
+
+        if (user.length === 0) {
+            return res.status(401).send('Unauthorized');
+        }
+
+        const mobileNumber = user[0].phone;
+
+        console.log('Data received:', mobileNumber, utrNumber);
+
+        const sql = 'INSERT INTO rechargeRequests (mobileNumber, utrNumber, status) VALUES (?, ?, ?)';
+        const [result] = await connection.execute(sql, [mobileNumber, utrNumber, 'Pending']);
+        console.log('Data inserted:', result);
+
+        return res.status(200).send('Data saved successfully!');
+    } catch (err) {
+        console.error('Error inserting data:', err);
+        res.status(500).send('Server Error');
+    }
+};
+
 
 const checkInHandling = async (req, res) => {
     let auth = req.cookies.auth;
@@ -1850,5 +1882,6 @@ module.exports = {
     updateRecharge,
     confirmRecharge,
     cancelRecharge,
+    saveUtrController,
     confirmUSDTRecharge
 }

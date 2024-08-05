@@ -5,6 +5,21 @@ require('dotenv').config();
 
 let timeNow = Date.now();
 
+const getRechargeRequests = async () => {
+    const [rows] = await connection.execute('SELECT * FROM rechargeRequests');
+    return rows;
+};
+
+
+const rechargeRequestsPage = async (req, res) => {
+    try {
+        const rechargeRequests = await getRechargeRequests();
+        return res.render("manage/rechargerequests.ejs", { rechargeRequests });
+    } catch (err) {
+        console.error('Error fetching recharge requests:', err);
+        res.status(500).send('Server Error');
+    }
+};
 const adminPage = async (req, res) => {
     return res.render("manage/index.ejs");
 }
@@ -1978,6 +1993,7 @@ module.exports = {
     listOrderOld,
     listOrderOldK3,
     editResult,
+    rechargeRequestsPage,
     adminPageK3,
     updateLevel,
     CreatedSalaryRecord,
