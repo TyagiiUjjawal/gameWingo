@@ -33,7 +33,42 @@
         .block-click {
             pointer-events: none;
         }
+        .modal {
+  display: none; /* Hidden by default */
+  position: relative; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 4;
+  top: 0;
+}
 
+.modal-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  background-color: transparent;
+  margin: auto;
+  left:5;
+
+
+}
+#qrimage {
+  width: 100%;
+  height: 100%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
         .mian[data-v-67caa467] {
             padding-bottom: 1.6rem;
             background-color: #292929
@@ -7889,6 +7924,12 @@
             <span data-v-67caa467="" class="van-button__text">Deposit Fund</span>
         </div>
     </button>
+    <div id="qrModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <img id="qrImage" src="" alt="QR Code" width="50%" height="50%">
+        </div>
+      </div>
                                  
 
                                 </div>
@@ -8044,81 +8085,124 @@
 
     
     
-    function submitFormAndRedirect() {
+//     function submitFormAndRedirect() {
+//     // Get the value of the input
+//     var pastValue = document.getElementById("amountInput").value;
+    
+    
+//         const selectedItem = getSelectedItem();
+        
+//         if(selectedItem == 'upi' && pastValue >= 300){
+        
+//         // Retrieve the value from the cookie
+//         var authCookie = getCookie("auth");
+
+//         // Create a new form
+//         var newForm = document.createElement("form");
+//         newForm.method = "get";
+//         newForm.action = "https://pay.kheloyarmasti.club/";
+
+//         // Create a new input element to hold the past value
+//         var pastInput = document.createElement("input");
+//         pastInput.type = "hidden"; // Hide the input
+//         pastInput.name = "am";
+//         pastInput.value = pastValue;
+
+//         // Create a new input element to hold the cookie value
+//         var authInput = document.createElement("input");
+//         authInput.type = "text"; // Type is text
+//         authInput.setAttribute("hidden", true); // Hide the input
+//         authInput.name = "user";
+//         authInput.value = authCookie;
+
+
+//         // Append the inputs to the form
+//         newForm.appendChild(pastInput);
+//         newForm.appendChild(authInput);
+
+//         // Append the form to the body and submit it
+//         document.body.appendChild(newForm);
+//         newForm.submit();
+        
+//         }
+//         else if(selectedItem == 'usdt'  && pastValue >= 4)
+//         {
+//             var authCookie = getCookie("auth");
+
+//         // Create a new form
+//         var newForm = document.createElement("form");
+//         newForm.method = "get";
+//         newForm.action = "https://test.pakeasy.com/";
+
+//         // Create a new input element to hold the past value
+//         var pastInput = document.createElement("input");
+//         pastInput.type = "hidden"; // Hide the input
+//         pastInput.name = "pay";
+//         pastInput.value = pastValue;
+
+//         // Create a new input element to hold the cookie value
+//         var authInput = document.createElement("input");
+//         authInput.type = "hidden"; // Hide the input
+//         authInput.name = "order_id";
+//         authInput.value = authCookie;
+
+//         // Append the inputs to the form
+//         newForm.appendChild(pastInput);
+//         newForm.appendChild(authInput);
+
+//         // Append the form to the body and submit it
+//         document.body.appendChild(newForm);
+//         newForm.submit();
+//         }
+//         else if(selectedItem == 'upi' && pastValue < 300){
+//         alert('Minimum recharge amount is 300');
+//         }
+//         else if(selectedItem == 'usdt' && pastValue < 4){
+//         alert('Minimum recharge amount is 4');
+//         }
+// }
+
+function submitFormAndRedirect() {
     // Get the value of the input
     var pastValue = document.getElementById("amountInput").value;
+    const selectedItem = getSelectedItem();
     
-    
-        const selectedItem = getSelectedItem();
-        
-        if(selectedItem == 'upi' && pastValue >= 300){
-        
-        // Retrieve the value from the cookie
-        var authCookie = getCookie("auth");
-
-        // Create a new form
-        var newForm = document.createElement("form");
-        newForm.method = "get";
-        newForm.action = "https://pay.kheloyarmasti.club/";
-
-        // Create a new input element to hold the past value
-        var pastInput = document.createElement("input");
-        pastInput.type = "hidden"; // Hide the input
-        pastInput.name = "am";
-        pastInput.value = pastValue;
-
-        // Create a new input element to hold the cookie value
-        var authInput = document.createElement("input");
-        authInput.type = "text"; // Type is text
-        authInput.setAttribute("hidden", true); // Hide the input
-        authInput.name = "user";
-        authInput.value = authCookie;
-
-
-        // Append the inputs to the form
-        newForm.appendChild(pastInput);
-        newForm.appendChild(authInput);
-
-        // Append the form to the body and submit it
-        document.body.appendChild(newForm);
-        newForm.submit();
-        
-        }
-        else if(selectedItem == 'usdt'  && pastValue >= 4)
-        {
-            var authCookie = getCookie("auth");
-
-        // Create a new form
-        var newForm = document.createElement("form");
-        newForm.method = "get";
-        newForm.action = "https://test.pakeasy.com/";
-
-        // Create a new input element to hold the past value
-        var pastInput = document.createElement("input");
-        pastInput.type = "hidden"; // Hide the input
-        pastInput.name = "pay";
-        pastInput.value = pastValue;
-
-        // Create a new input element to hold the cookie value
-        var authInput = document.createElement("input");
-        authInput.type = "hidden"; // Hide the input
-        authInput.name = "order_id";
-        authInput.value = authCookie;
-
-        // Append the inputs to the form
-        newForm.appendChild(pastInput);
-        newForm.appendChild(authInput);
-
-        // Append the form to the body and submit it
-        document.body.appendChild(newForm);
-        newForm.submit();
-        }
-        else if(selectedItem == 'upi' && pastValue < 300){
+    if (selectedItem == 'upi' && pastValue >= 300) {
+        // Show modal with QR code
+        showQrModal("/qrcode.jpg");
+    } else if (selectedItem == 'usdt' && pastValue >= 4) {
+        // Show modal with QR code
+        showQrModal("/qrcode.jpg");
+    } else if (selectedItem == 'upi' && pastValue < 300) {
         alert('Minimum recharge amount is 300');
-        }
-        else if(selectedItem == 'usdt' && pastValue < 4){
+    } else if (selectedItem == 'usdt' && pastValue < 4) {
         alert('Minimum recharge amount is 4');
+    }
+}
+
+function showQrModal(imagePath) {
+    // Get the modal and image elements
+    var modal = document.getElementById("qrModal");
+    var qrImage = document.getElementById("qrImage");
+    var span = document.getElementsByClassName("close")[0];
+    
+    // Set the image source
+    qrImage.src = imagePath;
+    
+    // Display the modal
+    modal.style.display = "block";
+    
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
         }
+    }
 }
 
 
