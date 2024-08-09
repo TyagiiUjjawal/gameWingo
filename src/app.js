@@ -42,7 +42,7 @@ const key = {
   universe_domain: "googleapis.com",
 };
 
-app.post('/api/cwTestApi', async (req, res) => {
+app.get('/api/cwTestApi', async (req, res) => {
   try {
     const auth = await authorize();
     const message = await submitSitemap(auth);
