@@ -8,7 +8,7 @@
 	<meta name="google" content="notranslate">
 	<meta name="robots" content="noindex,nofollow">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<title>DVGAME</title>
+	<title>MM Club</title>
 	<link rel="stylesheet" href="./index_files/modules-96c1e775.css">
 	<link rel="stylesheet" href="./index_files/page-activity-d48e62db.css">
 	<link rel="stylesheet" href="./index_files/index-96409872.css">
@@ -1557,27 +1557,48 @@
 			</div>
 			<div data-v-6a5413fb="" data-v-28fadbec="" class="content">
 				<div data-v-6a5413fb="">
-
-					<a href="https://tawk.to/chat/65c8fe398d261e1b5f5ecbfd/1hmci259a">
-						<div data-v-6a5413fb="" class="content-item">
-							<div data-v-6a5413fb="" class="content-item-title"><img data-v-6a5413fb="" alt="" class=""
+			
+					<!-- Live Chat Section -->
+					<div data-v-6a5413fb="" class="content-item" 
+						 style="cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: 10px; border-bottom: 1px solid #ccc; position: relative;" 
+						 onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+						<div data-v-6a5413fb="" class="content-item-title" style="display: flex; align-items: center;">
+							<img data-v-6a5413fb="" alt="" class=""
 									data-origin="https://www.bigdaddygame2.com/assets/png/CStype3-7588d980.png"
-									src="./index_files/CStype3-7588d980.png"><span data-v-6a5413fb="">LiveChat</span>
-							</div><i data-v-6a5413fb="" class="van-badge__wrapper van-icon van-icon-arrow"
-								style="color: rgb(168, 168, 168); font-size: 18px;"></i>
+									src="./index_files/CStype3-7588d980.png">
+							<span data-v-6a5413fb="">LiveChat</span>
 						</div>
-					</a>
-
-					<div data-v-6a5413fb="" class="content-item" onclick="location.href='<%=telegram%>'">
-						<div data-v-6a5413fb="" class="content-item-title"><img data-v-6a5413fb="" alt="" class=""
-								data-origin="https://www.bigdaddygame2.com/assets/png/CStype3-7588d980.png"
-								src="/images/icon_Telegram.webp"><span data-v-6a5413fb="">Telegram</span></div><i
-							data-v-6a5413fb="" class="van-badge__wrapper van-icon van-icon-arrow"
-							style="color: rgb(168, 168, 168); font-size: 18px;"></i>
+						<i data-v-6a5413fb="" class="van-badge__wrapper van-icon van-icon-arrow"
+						   style="color: rgb(168, 168, 168); font-size: 18px;"></i>
+						<!-- Tooltip -->
+						<div class="tooltip" 
+							 style="visibility: hidden; background-color: #555; color: #fff; text-align: center; border-radius: 5px; padding: 5px; position: absolute; z-index: 1; bottom: 100%; left: 50%; margin-left: -60px; opacity: 0; transition: opacity 0.3s; width: 120px;">
+							Coming Soon
+						</div>
 					</div>
-
+			
+					<!-- Telegram Section -->
+					<div data-v-6a5413fb="" class="content-item" 
+						 style="cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: 10px; position: relative;" 
+						 onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+						<div data-v-6a5413fb="" class="content-item-title" style="display: flex; align-items: center;">
+							<img data-v-6a5413fb="" alt="" class=""
+								data-origin="https://www.bigdaddygame2.com/assets/png/CStype3-7588d980.png"
+								src="/images/icon_Telegram.webp">
+							<span data-v-6a5413fb="">Telegram</span>
+						</div>
+						<i data-v-6a5413fb="" class="van-badge__wrapper van-icon van-icon-arrow"
+						   style="color: rgb(168, 168, 168); font-size: 18px;"></i>
+						<!-- Tooltip -->
+						<div class="tooltip" 
+							 style="visibility: hidden; background-color: #555; color: #fff; text-align: center; border-radius: 5px; padding: 5px; position: absolute; z-index: 1; bottom: 100%; left: 50%; margin-left: -60px; opacity: 0; transition: opacity 0.3s; width: 120px;">
+							Coming Soon
+						</div>
+					</div>
+			
 				</div>
 			</div>
+			
 		</div>
 		<div class="customer" id="customerId"
 			style="--7688837a: 'Roboto', 'Inter', sans-serif; --17a7a9f6: bahnschrift;"
@@ -1608,6 +1629,17 @@
 		</div>
 	</div>
 	<script>
+		 function showTooltip(element) {
+        var tooltip = element.querySelector('.tooltip');
+        tooltip.style.visibility = 'visible';
+        tooltip.style.opacity = '1';
+    }
+
+    function hideTooltip(element) {
+        var tooltip = element.querySelector('.tooltip');
+        tooltip.style.visibility = 'hidden';
+        tooltip.style.opacity = '0';
+    }
 		$(document).ready(function () {
 			// Select the overlay element
 			$('.van-overlay').fadeIn(10);

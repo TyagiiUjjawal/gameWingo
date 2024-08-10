@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="robots" content="noindex,nofollow">
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
-    <title>DVGAME</title>
+    <title>MM Club</title>
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-thin.css">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-solid.css">
@@ -256,18 +256,23 @@
                                             </i>
                                         </div>
                                     </div>
-                                    <div data-v-21f3500a="" class="item c-row c-row-between"
-                                        onclick="location.href='<%=cskh%>'">
-                                        <div data-v-21f3500a="" class="c-row c-row-middle">
-                                            <i class="fab fa-whatsapp fa-lg center" style="color: #D9AC4F"></i>
-                                            <span data-v-21f3500a="" class="name">Whatsapp Support</span>
-                                        </div>
-                                        <div data-v-21f3500a="" class="c-row c-row-middle">
-                                            <i data-v-21f3500a="" class="fa-regular fa-angle-right fa-fade fa-lg center"
-                                                style="color: rgb(166, 169, 174); font-size: 20px;">
-                                            </i>
-                                        </div>
-                                    </div>
+                                    <div data-v-21f3500a="" class="item c-row c-row-between" 
+                                    style="cursor: pointer; position: relative;" 
+                                    onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+                                   <div data-v-21f3500a="" class="c-row c-row-middle" style="display: flex; align-items: center;">
+                                       <i class="fab fa-whatsapp fa-lg center" style="color: #D9AC4F; "></i>
+                                       <span data-v-21f3500a="" class="name">WhatsApp Support</span>
+                                   </div>
+                                   <div data-v-21f3500a="" class="c-row c-row-middle" style="display: flex; align-items: center;">
+                                       <i data-v-21f3500a="" class="fa-regular fa-angle-right fa-fade fa-lg center"
+                                          style="color: rgb(166, 169, 174); font-size: 20px;"></i>
+                                   </div>
+                                   <!-- Tooltip -->
+                                   <div class="tooltip" 
+                                        style="visibility: hidden; background-color: #555; color: #fff; text-align: center; border-radius: 5px; padding: 5px; position: absolute; z-index: 1; bottom: 100%; left: 50%; margin-left: -60px; opacity: 0; transition: opacity 0.3s; width: 120px;">
+                                       Coming Soon
+                                   </div>
+                               </div>
                                     <div data-v-21f3500a="" class="item c-row c-row-between"
                                         onclick="location.href='/keFuMenu'">
                                         <div data-v-21f3500a="" class="c-row c-row-middle">
@@ -368,6 +373,17 @@
             });
     </script>
     <script>
+         function showTooltip(element) {
+        var tooltip = element.querySelector('.tooltip');
+        tooltip.style.visibility = 'visible';
+        tooltip.style.opacity = '1';
+    }
+
+    function hideTooltip(element) {
+        var tooltip = element.querySelector('.tooltip');
+        tooltip.style.visibility = 'hidden';
+        tooltip.style.opacity = '0';
+    }
         $('.reload_money').click(function (e) {
             e.preventDefault();
             $(this).addClass('action block-click');
